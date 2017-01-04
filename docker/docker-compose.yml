@@ -1,0 +1,70 @@
+###############################################################################
+# Docker for frontend
+###############################################################################
+
+#stack-memcached:
+#  image: phpdockerio/memcached:latest
+#  container_name: stack-memcached
+
+#stack-redis:
+#  image: phpdockerio/redis:latest
+#  container_name: stack-redis
+
+#adminer:
+#  image: hardware/adminer
+#  container_name: adminer
+#  ports:
+#    - "8083:8888"
+#  links:
+#    - stack-postgres
+
+#stack-postgres:
+#  image: postgres:9.6
+#  container_name: stack-postgres
+#  ports:
+#    - "5433:5432"
+#  volumes:
+#    - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+#  environment:
+#    - POSTGRES_USER=stack
+#    - POSTGRES_PASSWORD=stack
+#    - POSTGRES_DB=stack
+
+#stack-mongodb:
+#  image: mongo
+#  container_name: stack-mongodb
+#  ports:
+#    - "27019:27017"
+#  command:
+#    mongod --smallfiles --quiet --logpath=/dev/null
+
+#stack-elasticsearch:
+#  build: .
+#  dockerfile: elasticsearch/Dockerfile
+#  container_name: stack-elasticsearch
+#  ports:
+#    - "9200:9200"
+#    - "9300:9300"
+
+#stack-rabbitmq:
+#  image: rabbitmq:3-management
+#  container_name: stack-rabbitmq
+#  ports:
+#    - "1050:15672"
+#  environment:
+#    - RABBITMQ_DEFAULT_USER=stack
+#    - RABBITMQ_DEFAULT_PASS=h4UgSa
+
+################################################################################
+## go-lang-udemy-course
+################################################################################
+
+go-lang-udemy-course:
+  build: .
+  restart: always
+  dockerfile: go/Dockerfile
+  container_name: go-lang-udemy-course
+#  links:
+#    - stack-mongodb
+  ports:
+    - "80:80"
